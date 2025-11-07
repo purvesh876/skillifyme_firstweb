@@ -3,7 +3,7 @@ import App from "../App.jsx"
 import AuthLayouts from '../layout'
 import Home from '../pages/home/page.jsx'
 import Contact from '../pages/contact/page.jsx'
-import Blog from '../pages/blog/page.jsx'
+import Blog from '../pages/blog/BlogPage.jsx'
 import Courses from '../pages/courses/page.jsx'
 import Testimonial from '../pages/testimonial/page.jsx'
 import RegisterPage from "../pages/register/Page.jsx"
