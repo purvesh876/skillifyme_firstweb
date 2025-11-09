@@ -4,7 +4,6 @@ import { FaFacebookF, FaXTwitter, FaLinkedinIn, FaBehance } from "react-icons/fa
 import blogData from "./BlogData";
 
 export default function BlogDetail({ blog, onBack }) {
-  // Get related posts (excluding the current one)
   const relatedPosts = blogData.filter((b) => b.id !== blog.id).slice(0, 3);
 
   return (
