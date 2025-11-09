@@ -66,7 +66,6 @@ export const AuthUserProvider = ({ children }) => {
       ...data,
       uid,
       updatedAt: serverTimestamp(),
-      coursesPurchased: data.coursesPurchased || {},
     };
     await setDoc(userRef, payload, { merge: true });
     setCurrentUser(payload);
@@ -84,6 +83,7 @@ export const AuthUserProvider = ({ children }) => {
       college,
       degree,
       passoutYear,
+      
     } = userInfo;
 
     try {
