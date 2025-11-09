@@ -10,7 +10,7 @@ import RegisterPage from "../pages/register/Page.jsx"
 import LoginPage from "../pages/login/Page.jsx"
 import GoogleExtraInfo from '../pages/register/GoogleExtraInfo.jsx'
 import CourseDetailPage from '../pages/courses/CourseDetailPage.jsx'
-import CheckoutPage from '../pages/courses/checkoutPage.jsx'
+import CheckoutPage from '../pages/courses/CheckoutPage.jsx'
 import PaymentSuccess from '../pages/courses/PaymentSuccess.jsx'
 
 const router = createBrowserRouter([
