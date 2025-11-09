@@ -6,7 +6,8 @@ export const coursesData = [
     price: 2999,
     originalPrice: 2999,
     discount: 0,
-    image: "https://via.placeholder.com/200",
+    image:
+      "https://images.unsplash.com/photo-1581276879432-15a19d654956?auto=format&fit=crop&w=1600&q=80",
     description:
       "Build modern, interactive user interfaces from the ground up using React, essential hooks, and component-based architecture.",
   },
@@ -17,7 +18,8 @@ export const coursesData = [
     price: 2999,
     originalPrice: 2999,
     discount: 0,
-    image: "https://via.placeholder.com/200",
+    image:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1600&q=80",
     description:
       "Master core ML algorithms, data preprocessing, and model evaluation using Python and popular libraries like Scikit-learn and Pandas.",
   },
@@ -28,7 +30,8 @@ export const coursesData = [
     price: 2999,
     originalPrice: 2999,
     discount: 0,
-    image: "https://via.placeholder.com/200",
+    image:
+      "https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=1600&q=80",
     description:
       "Solidify your programming foundation by mastering essential Data Structures and Algorithms implemented efficiently in C++.",
   },
@@ -39,7 +42,8 @@ export const coursesData = [
     price: 2999,
     originalPrice: 2999,
     discount: 0,
-    image: "https://via.placeholder.com/200",
+    image:
+      "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=1600&q=80",
     description:
       "A hands-on, project-based workshop designed to bridge the gap between theoretical ML knowledge and real-world deployment challenges.",
   },
@@ -50,7 +54,8 @@ export const coursesData = [
     price: 2999,
     originalPrice: 2999,
     discount: 0,
-    image: "https://via.placeholder.com/200",
+    image:
+      "https://images.unsplash.com/photo-1686199940420-3b7f6b45f0d2?auto=format&fit=crop&w=1600&q=80",
     description:
       "Dive into advanced neural network architectures, build foundational LLMs, and explore state-of-the-art Generative AI models.",
   },
@@ -61,11 +66,13 @@ export const coursesData = [
     price: 2499,
     originalPrice: 2499,
     discount: 0,
-    image: "https://via.placeholder.com/200",
+    image:
+      "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1600&q=80",
     description:
       "A guided program offering hands-on experience in cutting-edge research methodologies, literature reviews, and scientific paper writing.",
   },
 ];
+
 export const courseData = [
   {
     id: 1,
