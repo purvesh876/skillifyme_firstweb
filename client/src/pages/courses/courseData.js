@@ -3,10 +3,10 @@ export const coursesData = [
     id: 1,
     name: "AI Skill Path",
     category: "Artificial Intelligence",
-    price: 499,
-    originalPrice: 999,
+    price: 2999,
+    originalPrice: 5998,
     discount: 50,
-    image: "https://placehold.co/600x400/556270/FFFFFF?text=React",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80",
     description: "Learn React from scratch with practical examples and projects.",
     syllabus: [
   {
@@ -168,8 +168,8 @@ export const coursesData = [
   id: 2,
   name: "C++ & Fundamentals of DSA",
   category: "Programming",
-  price: 499,
-  originalPrice: 999,
+  price: 2999,
+  originalPrice: 5998,
   discount: 50,
   image:
     "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=1600&q=80",
@@ -334,8 +334,8 @@ export const coursesData = [
   id: 3,
   name: "Web Development Skill Path",
   category: "Full-Stack Development",
-  price: 499,
-  originalPrice: 999,
+  price: 2999,
+  originalPrice: 5998,
   discount: 50,
   image:
     "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80",
@@ -497,8 +497,8 @@ export const coursesData = [
   id: 4,
   name: "Machine Learning Mastery Lab",
   category: "AI / ML",
-  price: 499,
-  originalPrice: 999,
+  price: 2999,
+  originalPrice: 5998,
   discount: 50,
   image:
     "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1600&q=80",
@@ -659,11 +659,11 @@ export const coursesData = [
   id: 5,
   name: "Generative AI & Deep Learning Studio",
   category: "Advanced AI",
-  price: 499,
-  originalPrice: 999,
+  price: 2999,
+  originalPrice: 5998,
   discount: 50,
   image:
-    "https://images.unsplash.com/photo-1686199940420-3b7f6b45f0d2?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-16861599840420-3b7f6b45f0d2?auto=format&fit=crop&w=1600&q=80",
   description:
     "Dive deep into neural architectures, build generative AI models, and explore cutting-edge LLMs, diffusion models, and transformer frameworks driving modern AI innovation.",
   syllabus: [
@@ -822,8 +822,8 @@ export const coursesData = [
   id: 6,
   name: "Research Intern",
   category: "Internship Program",
-  price: 499,
-  originalPrice: 999,
+  price: 2999,
+  originalPrice: 5998,
   discount: 50,
   image:
     "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1600&q=80",

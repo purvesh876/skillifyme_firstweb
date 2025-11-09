@@ -3,10 +3,11 @@ import React, { useState } from "react";
 import BlogCard from "./BlogCard";
 import BlogDetail from "./BlogDetail";
 import blogData from "./BlogData";
+import { useNavigate } from "react-router-dom";
 
 export default function BlogPage() {
   const [selectedBlog, setSelectedBlog] = useState(null);
-
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-[#f9fafa] text-slate-100 px-6 py-12">
       {!selectedBlog ? (
@@ -24,6 +25,15 @@ export default function BlogPage() {
       ) : (
         <BlogDetail blog={selectedBlog} onBack={() => setSelectedBlog(null)} />
       )}
+      <button
+      onClick={() => navigate("/blog/create")} // ✅ correct call
+      className="fixed bottom-7 right-7 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
+                 text-white w-16 h-16 rounded-full shadow-lg 
+                 flex items-center justify-center text-5xl cursor-pointer pb-[9.5px]
+                 hover:scale-110 hover:shadow-2xl transition-all duration-300 ease-in-out"
+    >
+      +
+    </button>
     </div>
   );
 }

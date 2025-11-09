@@ -12,6 +12,8 @@ import GoogleExtraInfo from '../pages/register/GoogleExtraInfo.jsx'
 import CourseDetailPage from '../pages/courses/CourseDetailPage.jsx'
 import CheckoutPage from '../pages/courses/CheckoutPage.jsx'
 import PaymentSuccess from '../pages/courses/PaymentSuccess.jsx'
+import BlogCard from '../pages/blog/BlogCard.jsx'
+import {BlogCreate}  from '../pages/blog/BlogCreate.jsx'
 
 const router = createBrowserRouter([
     {
@@ -46,6 +48,10 @@ const router = createBrowserRouter([
             {
                 path: "blog",
                 element: <AuthLayouts><Blog /></AuthLayouts>
+            },
+            {
+                path: "blog/create",
+                element: <AuthLayouts><BlogCreate /></AuthLayouts>
             },
             {
                 path: "courses",
