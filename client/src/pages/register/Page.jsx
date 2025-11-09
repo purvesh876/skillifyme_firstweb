@@ -54,6 +54,7 @@ function RegisterPage() {
       await registerWithEmail({
         name: formData.name,
         email: formData.email,
+        password: formData.password,
         contactNumber: formData.contactNumber,
         dob: formData.dob,
         college: formData.college,
