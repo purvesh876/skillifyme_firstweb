@@ -43,7 +43,17 @@ function RegisterPage() {
     }
 
     try {
-      await registerWithEmail(formData);
+      await registerWithEmail({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        contactNumber: formData.contactNumber,
+        dob: formData.dob,
+        college: formData.college,
+        degree: formData.degree,
+        passoutYear: formData.passoutYear,
+      });
+
       toast.success("Account created successfully!");
       navigate("/courses");
     } catch (err) {
