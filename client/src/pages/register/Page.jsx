@@ -4,11 +4,9 @@ import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useAuthUser } from "../../context/AuthUserContext";
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
-import { db } from "../../lib/firebase";
 
 function RegisterPage() {
-  const { currentUser, loading, registerWithEmail, signInWithGoogle } = useAuthUser();
+  const { currentUser, loading, registerWithEmail } = useAuthUser();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -22,28 +20,22 @@ function RegisterPage() {
     passoutYear: "",
   });
 
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(true); // password visible by default
   const [isDisabled, setDisabled] = useState(false);
 
-
   useEffect(() => {
-    if (!loading && currentUser) {
-      navigate("/courses");
-    }
+    if (!loading && currentUser) navigate("/courses");
   }, [currentUser, loading, navigate]);
 
-  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  
   const handleEmailRegister = async (e) => {
     e.preventDefault();
     setDisabled(true);
 
-    
     if (Object.values(formData).some((v) => v.trim() === "")) {
       toast.error("All fields are required!");
       setDisabled(false);
@@ -51,16 +43,7 @@ function RegisterPage() {
     }
 
     try {
-      await registerWithEmail({
-        name: formData.name,
-        email: formData.email,
-        contactNumber: formData.contactNumber,
-        dob: formData.dob,
-        college: formData.college,
-        degree: formData.degree,
-        passoutYear: formData.passoutYear,
-      });
-
+      await registerWithEmail(formData);
       toast.success("Account created successfully!");
       navigate("/courses");
     } catch (err) {
@@ -71,62 +54,37 @@ function RegisterPage() {
     }
   };
 
-const handleGoogleSignIn = async () => {
-  setDisabled(true);
-  try {
-    
-    const userData = await signInWithGoogle();
-
-    const requiredFields = ["name", "contactNumber", "dob", "college", "degree", "passoutYear"];
-    const missingFields = requiredFields.filter(f => !userData[f] || userData[f].toString().trim() === "");
-
-    if (missingFields.length > 0) {
-   
-      toast("Please complete your profile info first!");
-      navigate("/extra-info", {
-        state: { uid: userData.uid, missingFields, userData },
-      });
-      return;
-    }
-
-    
-    toast.success("Login successful!");
-    navigate("/courses");
-  } catch (err) {
-    console.error("Google Sign-In Error:", err);
-    toast.error(err.message || "Google Sign-In failed!");
-  } finally {
-    setDisabled(false);
-  }
-};
-
-
   if (loading) return <>Loading...</>;
 
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white flex flex-col items-center justify-center px-6 py-10">
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-4 py-10">
       <Toaster position="top-center" />
 
-      {/* Header */}
-      <motion.h1
-        initial={{ opacity: 0, y: -50 }}
+      <motion.div
+        initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-4xl md:text-6xl font-bold mb-10 text-center text-teal-400"
+        transition={{ duration: 0.7 }}
+        className="w-full max-w-2xl bg-white rounded-3xl shadow-xl p-8 sm:p-12"
       >
-        Register
-      </motion.h1>
+        {/* Header */}
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-4xl sm:text-5xl font-bold text-gray-800 mb-8 text-center"
+        >
+          Create Your Account
+        </motion.h1>
 
-      {/* Form */}
-      <motion.form
-        onSubmit={handleEmailRegister}
-        initial={{ opacity: 0, y: 60 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="w-full max-w-3xl bg-white/10 backdrop-blur-md rounded-2xl shadow-lg p-8 flex flex-col gap-6"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Form */}
+        <motion.form
+          onSubmit={handleEmailRegister}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+        >
+          {/* Input fields */}
           {[
             { label: "Full Name", name: "name", type: "text" },
             { label: "Email", name: "email", type: "email" },
@@ -136,15 +94,15 @@ const handleGoogleSignIn = async () => {
             { label: "Degree", name: "degree", type: "text" },
             { label: "Passout Year", name: "passoutYear", type: "number" },
           ].map(({ label, name, type }) => (
-            <div className="flex flex-col" key={name}>
-              <label className="mb-1 text-lg">{label}</label>
+            <div key={name} className="flex flex-col">
+              <label className="mb-1 text-gray-700 font-medium">{label}</label>
               <input
                 type={type}
                 name={name}
                 value={formData[name]}
                 onChange={handleChange}
                 placeholder={`Enter ${label.toLowerCase()}`}
-                className="p-2 rounded-lg bg-transparent border-2 border-teal-500 focus:outline-none focus:border-teal-300"
+                className="p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-teal-400 bg-white text-gray-800"
                 required
               />
             </div>
@@ -152,50 +110,50 @@ const handleGoogleSignIn = async () => {
 
           {/* Password */}
           <div className="flex flex-col relative">
-            <label className="mb-1 text-lg">Password</label>
+            <label className="mb-1 text-gray-700 font-medium">Password</label>
             <input
               type={showPassword ? "text" : "password"}
               name="password"
               value={formData.password}
               onChange={handleChange}
               placeholder="Enter password"
-              className="p-2 pr-10 rounded-lg bg-transparent border-2 border-teal-500 focus:outline-none focus:border-teal-300"
+              className="p-3 pr-10 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-teal-400 bg-white text-gray-800"
               required
             />
             <button
               type="button"
               onClick={() => setShowPassword((s) => !s)}
-              className="absolute right-3 top-9 text-teal-400"
+              className="absolute right-3 top-10 text-gray-500"
             >
-              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
             </button>
           </div>
-        </div>
 
-        {/* Buttons */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8">
-          <button
-            type="submit"
-            disabled={isDisabled}
-            className={`bg-teal-500 hover:bg-teal-600 transition-colors text-white py-2 px-8 rounded-lg font-semibold text-lg ${
-              isDisabled && "opacity-50 cursor-not-allowed"
-            }`}
+          {/* Submit Button */}
+          <div className="sm:col-span-2 flex flex-col gap-4 mt-4">
+            <button
+              type="submit"
+              disabled={isDisabled}
+              className={`w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 rounded-xl transition-all ${
+                isDisabled ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              {isDisabled ? "Registering..." : "Register"}
+            </button>
+          </div>
+        </motion.form>
+
+        {/* Footer */}
+        <p className="mt-6 text-center text-gray-500 text-sm">
+          Already have an account?{" "}
+          <span
+            onClick={() => navigate("/login")}
+            className="text-teal-500 font-semibold cursor-pointer hover:underline"
           >
-            {isDisabled ? "Registering..." : "Register with Email"}
-          </button>
-{/* 
-          <button
-            type="button"
-            onClick={handleGoogleSignIn}
-            disabled={isDisabled}
-            className="bg-white text-gray-900 hover:bg-gray-200 transition-colors py-2 px-8 rounded-lg font-semibold text-lg flex items-center gap-2"
-          >
-            <img src="/google-icon.svg" alt="Google" className="w-5 h-5" />
-            Sign in with Google
-          </button>
-           */}
-        </div>
-      </motion.form>
+            Login
+          </span>
+        </p>
+      </motion.div>
     </div>
   );
 }
