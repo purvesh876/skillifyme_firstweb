@@ -1,0 +1,9 @@
+{
+  "name": "IntelliLearn",
+  "short_name": "IntelliLearn",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2874f0",
+  "icons": []
+}
