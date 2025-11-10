@@ -663,7 +663,7 @@ export const coursesData = [
   originalPrice: 5998,
   discount: 50,
   image:
-    "https://images.unsplash.com/photo-16861599840420-3b7f6b45f0d2?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1686159984042-3b7f6b45f0d2?auto=format&fit=crop&w=1600&q=80",
   description:
     "Dive deep into neural architectures, build generative AI models, and explore cutting-edge LLMs, diffusion models, and transformer frameworks driving modern AI innovation.",
   syllabus: [
