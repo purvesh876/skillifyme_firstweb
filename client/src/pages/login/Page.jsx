@@ -15,31 +15,38 @@ function Login() {
   const redirectTo = location.state?.from || null;
 
   useEffect(() => {
-    if (redirectTo) {
-      navigate(redirectTo, { replace: true });
-    } else if (!loading && currentUser) navigate("/courses");
+     if (!loading && currentUser) navigate("/courses");
   }, [currentUser, loading, navigate]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setDisabled(true);
-    if (!formData.email || !formData.password) {
-      toast.error("All fields are required!");
-      setDisabled(false);
-      return;
-    }
+  e.preventDefault();
+  setDisabled(true);
 
-    try {
-      await loginWithEmail(formData.email, formData.password);
-      toast.success("Login successful!");
-      navigate("/courses");
-    } catch (err) {
-      console.error(err);
-      toast.error("Invalid credentials or user not found!");
-    } finally {
-      setDisabled(false);
-    }
-  };
+  if (!formData.email || !formData.password) {
+    toast.error("All fields are required!", { duration: 2000 });
+    setDisabled(false);
+    return;
+  }
+
+  try {
+    await loginWithEmail(formData.email, formData.password);
+    toast.success("Login successful!", { duration: 2000 });
+
+    setTimeout(() => {
+      if (redirectTo) {
+        navigate(redirectTo, { replace: true });
+      } else {
+        navigate("/courses");
+      }
+    }, 800); 
+  } catch (err) {
+    console.error(err);
+    toast.error("Invalid credentials or user not found!", { duration: 3000 });
+  } finally {
+    setDisabled(false);
+  }
+};
+
 
   if (loading) return <>Loading...</>;
 
