@@ -14,6 +14,7 @@ import CheckoutPage from '../pages/courses/CheckoutPage.jsx'
 import PaymentSuccess from '../pages/courses/PaymentSuccess.jsx'
 import BlogCard from '../pages/blog/BlogCard.jsx'
 import {BlogCreate}  from '../pages/blog/BlogCreate.jsx'
+import CoursesPage from '../pages/courses/page.jsx'
 
 const router = createBrowserRouter([
     {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <AuthLayouts><Home /></AuthLayouts>
+                element: <AuthLayouts><CoursesPage/></AuthLayouts>
             },
             {
                 path: "home",

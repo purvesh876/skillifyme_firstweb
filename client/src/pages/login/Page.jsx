@@ -1,5 +1,5 @@
 import { useAuthUser } from "../../context/AuthUserContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
@@ -11,9 +11,13 @@ function Login() {
   const [isDisabled, setDisabled] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
   const navigate = useNavigate();
+  const location = useLocation();
+  const redirectTo = location.state?.from || null;
 
   useEffect(() => {
-    if (!loading && currentUser) navigate("/courses");
+    if (redirectTo) {
+      navigate(redirectTo, { replace: true });
+    } else if (!loading && currentUser) navigate("/courses");
   }, [currentUser, loading, navigate]);
 
   const handleSubmit = async (e) => {
@@ -102,9 +106,8 @@ function Login() {
           <button
             type="submit"
             disabled={isDisabled}
-            className={`w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 rounded-xl transition-all ${
-              isDisabled ? "opacity-50 cursor-not-allowed" : ""
-            }`}
+            className={`w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 rounded-xl transition-all ${isDisabled ? "opacity-50 cursor-not-allowed" : ""
+              }`}
           >
             {isDisabled ? "Logging In..." : "Login"}
           </button>
