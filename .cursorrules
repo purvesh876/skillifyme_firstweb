@@ -1,0 +1,23 @@
+PROJECT: SkillifyMe Certificate System
+CONTEXT: Adding certificate features to existing React course platform
+TECH STACK: React + Vite (frontend), Node.js + Express (backend planned)
+CURRENT TASK: Frontend certificate components while waiting for backend decisions
+
+DEVELOPER PROFILE:
+- Strong frontend/JavaScript skills
+- Backend beginner but quick learner
+- Using DeepSeek for architecture, Cursor for implementation
+
+IMPLEMENTATION RULES:
+- Create reusable, well-commented components
+- Use TypeScript-like prop documentation
+- Follow existing project patterns
+- Add proper error boundaries
+- Use functional components with hooks
+- Ensure mobile responsiveness
+- Mock API calls for now
+
+FILE STRUCTURE:
+- New components go in src/components/certificates/
+- Follow existing styling conventions
+- Use CSS modules or existing styling approach

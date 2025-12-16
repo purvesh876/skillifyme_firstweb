@@ -16,6 +16,9 @@ import BlogCard from '../pages/blog/BlogCard.jsx'
 import {BlogCreate}  from '../pages/blog/BlogCreate.jsx'
 import CoursesPage from '../pages/courses/page.jsx'
 
+// Temporary import for testing
+import CertificateTest from '../components/certificates/CertificateTest.jsx'
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -73,6 +76,12 @@ const router = createBrowserRouter([
             {
                 path: "testimonial",
                 element: <AuthLayouts><Testimonial /></AuthLayouts>
+            },
+
+            // TEMPORARY ROUTE FOR TESTING ↓
+            {
+                path: "certificate-test",
+                element: <AuthLayouts><CertificateTest /></AuthLayouts>
             }
         ]
     }
